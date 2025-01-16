@@ -1,0 +1,107 @@
+@import url("https://fonts.googleapis.com/css2?family=Moderustic:wght@300..800&display=swap");
+ 
+*{
+  font-family: "Moderustic", sans-serif;
+}
+ 
+.App {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f0f0f0;
+  font-family: Arial, sans-serif;
+}
+ 
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+ 
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+ 
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+ 
+.App-link {
+  color: #61dafb;
+}
+ 
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+ 
+.container{
+  width:500px;
+  height: 800px;
+  padding:20px;
+  background-image: linear-gradient(to bottom right, #03fcba,#03befc);
+  border-radius:8px;
+  box-shadow: 0 4px 8px ;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+.header{
+  background-color: antiquewhite;
+  padding:10px;
+  font-family:'Times New Roman', Times, serif;
+  color: #f1356d;
+}
+.darkPink{
+  color: #f1356d;
+}
+.boxColor{
+  background-color: antiquewhite;
+}
+
+.redux {
+  /* display: flex;
+  justify-content: center; */
+  /* align-items: center; */
+  text-align: center;
+  padding: 20px;
+  height: 100vh;
+  background-color: #f0f0f0;
+  font-family: Arial, sans-serif;
+}
+
+.home-container {
+  transition: margin-left 0.3s ease-in-out;
+  margin-left: 0;
+}
+
+.home-container.with-sidebar {
+  margin-left: 240px; /* Adjust the content when the sidebar is open */
+}
+
+@media (max-width: 768px) {
+  .home-container.with-sidebar {
+    margin-left: 0; /* On small screens, show full-width content */
+  }
+  
+  .sidebar {
+    width: 100%;
+    position: absolute;
+    z-index: 100;
+  }
+}
+
+
