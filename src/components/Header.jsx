@@ -8,7 +8,10 @@ import MenuItem from '@mui/material/MenuItem';
 import Divider from '@mui/material/Divider';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import leaf from '../assets/food folder/leaf.jpeg';
+import leaf from '../images/foodFolder/moon.jpg';
+import {Home} from '@mui/icons-material';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+
 
 const Header = ({isSidebarVisible,setSidebarVisible,setIsLoggedIn}) => {
   const total = useSelector((state) => state.totalQuantity);
@@ -49,11 +52,18 @@ const Header = ({isSidebarVisible,setSidebarVisible,setIsLoggedIn}) => {
 
       <ul className='flex space-x-4 gap-3 items-end'>
         <li>
-          <Link to='/'>Home</Link>
+          <Link to='/'> 
+            <Home sx={{fontSize:'28px'}} />
+          </Link>
         </li>  
         <li>
+          <Link to='/wishlist'> 
+            <FavoriteIcon sx={{fontSize:'25px'}} />
+          </Link>
+        </li> 
+        <li>
           <Link to='/cart'>
-           <Badge badgeContent={total} color="primary">
+            <Badge badgeContent={total} color="primary">
              <ShoppingBagIcon/>
             </Badge>
           </Link>
@@ -72,7 +82,6 @@ const Header = ({isSidebarVisible,setSidebarVisible,setIsLoggedIn}) => {
             >
               <MenuItem >Profile</MenuItem>
               <MenuItem >Orders</MenuItem>
-              <MenuItem >Wishlists</MenuItem>
               <Divider />
               <MenuItem onClick={handleLogout}>Logout</MenuItem>
             </Menu>

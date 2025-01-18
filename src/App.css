@@ -92,6 +92,7 @@
   margin-left: 240px; /* Adjust the content when the sidebar is open */
 }
 
+/* Optionally for smaller screens, you could hide the sidebar or stack elements */
 @media (max-width: 768px) {
   .home-container.with-sidebar {
     margin-left: 0; /* On small screens, show full-width content */
@@ -103,5 +104,3 @@
     z-index: 100;
   }
 }
-
-

@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import cloudy from '../assets/clouds.png';
-import rainy from '../assets/rain 4.01.15 PM.png';
-import suncomes from '../assets/suncomes.png';
-import stormy from '../assets/storm.png';
-import temperature from '../assets/temperature-list.svg';
-import wind from '../assets/wind.svg';
-import sun from '../assets/sun 4.01.15 PM.png';
-import snow from '../assets/weather.png';
+import cloudy from '../images/weather/clouds.png';
+import rainy from '../images/weather/rain.png';
+import suncomes from '../images/weather/suncomes.png';
+import stormy from '../images/weather/storm.png';
+import temperature from '../images/weather/temperature-list.svg';
+import wind from '../images/weather/wind.svg';
+import sun from '../images/weather/sun.png';
+import snow from '../images/weather/weather.png';
 import PropTypes from 'prop-types';
 
 const WeatherDetails = ({icon,temp,location,country,lat,long,hum,windspeed}) => {
@@ -97,12 +97,12 @@ const Weather = () => {
 
 
     useEffect(() => {
-        searchApi();
+       searchApi();
     }, []);
 
 
     const searchApi = async() => {
-        let url = `https://api.openweathermap.org/data/2.5/weather?q=${text}&appid=45841bae654177c98405cfb0e5e1f2a8&units=Metric`;
+        let url = 'https://api.openweathermap.org/data/2.5/weather?q=${text}&appid=45841bae654177c98405cfb0e5e1f2a8&units=Metric';
 
         try{
         let response = await fetch(url);

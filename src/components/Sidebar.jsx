@@ -6,12 +6,12 @@ const Sidebar = ({ isSidebarVisible, setFilter }) => {
   const [activeFilter, setActiveFilter] = useState('all'); 
 
   const handleFilterChange = (filterType) => {
-    console.log("side",filterType);
     setFilter(filterType);
     setActiveFilter(filterType); 
   };
 
   return (
+   
     <Drawer
       className={`${isSidebarVisible ? 'visible' : 'hidden'}`}
       sx={{
@@ -42,18 +42,18 @@ const Sidebar = ({ isSidebarVisible, setFilter }) => {
           }}
         >
           <ListItemIcon >
-            <Home style={{color:'#f1356d'}} />
+            <Home style={{color:'#f1356d'}}/>
           </ListItemIcon>
           <ListItemText primary="All" />
         </ListItem>
 
         <ListItem onClick={() => handleFilterChange('latest')}
-          sx={{
-            backgroundColor: activeFilter === 'latest' ? '#e0e0e0' : 'transparent',
-            '&:hover': {
-              backgroundColor: '#e0e0e0',
-            },
-          }}>
+        sx={{
+          backgroundColor: activeFilter === 'Latest' ? '#e0e0e0' : 'transparent',
+          '&:hover': {
+            backgroundColor: '#e0e0e0',
+          },
+        }}>
           <ListItemIcon>
             <NewReleases style={{color:'#f1356d',hover:'antiquewhite'}}/>
           </ListItemIcon>
@@ -61,12 +61,12 @@ const Sidebar = ({ isSidebarVisible, setFilter }) => {
         </ListItem>
         
         <ListItem onClick={() => handleFilterChange('old')}
-          sx={{
-            backgroundColor: activeFilter === 'old' ? '#e0e0e0' : 'transparent',
-            '&:hover': {
-              backgroundColor: '#e0e0e0',
-            },
-          }}>
+        sx={{
+          backgroundColor: activeFilter === 'Old' ? '#e0e0e0' : 'transparent',
+          '&:hover': {
+            backgroundColor: '#e0e0e0',
+          },
+        }}>
           <ListItemIcon>
             <History style={{color:'#f1356d'}}/>
           </ListItemIcon>
@@ -76,9 +76,8 @@ const Sidebar = ({ isSidebarVisible, setFilter }) => {
 
       <Divider />
     </Drawer>
+
   );
 };
 
 export default Sidebar;
-
-

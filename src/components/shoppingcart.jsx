@@ -1,10 +1,11 @@
 import React, { useState, createContext , useEffect} from 'react';
-import { BrowserRouter, Route, Routes,useLocation } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom';
 import Header from './Header';
 import Home from './Home';
 import Cart from './Cart';
 import Sidebar from './Sidebar';
-import Login from './login';
+import Login from './Login';
+import Wishlist from './Wishlist';
 
 export const cartContext = createContext();
 
@@ -38,12 +39,12 @@ const ShoppingCart = () => {
         <div>
           <Routes>
             {/* <Route path='/' element={<Home filter={filter} setFilter={setFilter} isSidebarVisible={isSidebarVisible} setSidebarVisible={setSidebarVisible}/>} /> */}
-            <Route
-              path="/"
+            <Route path='/'
               element={isLoggedIn ? <Home filter={filter} setFilter={setFilter} isSidebarVisible={isSidebarVisible} setSidebarVisible={setSidebarVisible}/> : <Login setIsLoggedIn={setIsLoggedIn} />}
             />
             <Route path='/cart' element={<Cart />} />
             <Route path='/login' element={<Login  setIsLoggedIn={setIsLoggedIn}/>} /> 
+            <Route path='/wishlist' element={<Wishlist />} /> 
           </Routes>
         </div>
       </BrowserRouter>
@@ -51,6 +52,3 @@ const ShoppingCart = () => {
   );
 }
 export default ShoppingCart;
-
-
-

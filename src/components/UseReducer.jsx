@@ -3,12 +3,6 @@ import React, { useReducer } from 'react';
 const initialState = [
     {id:0,name:'Reading'}
 ];
-
-const init = (initialState) => {         //can be used or not necessary
-  const data = [...initialState,{id:1,name:'Walking'}];
-  return data;
-}
-
 const TODOS_ACTION = {
     ADD_TASK: 'ADD_TASK',
     DELETE_TASK: 'DELETE_TASK',
@@ -16,9 +10,6 @@ const TODOS_ACTION = {
 };
 
 const reducer = (state, action) => {
-  console.log("action",action);
-  console.log("state",state);
-
    switch (action.type) {
     case TODOS_ACTION.ADD_TASK:
         console.log("adding", state);
@@ -37,10 +28,13 @@ const reducer = (state, action) => {
    }
 };
 
-
+const init = (initialState) => {         //can be used or not necessary
+    const data = [...initialState,{id:1,name:'Walking'}];
+    return data;
+}
 
 const UseReducer = () => {
-  const [todos, dispatch] = useReducer(reducer, initialState, init);   //in 'reducer' we declare the functions for all the tasks. 
+  const [todos, dispatch] = useReducer(reducer, initialState, init);
   
   const handleTask = (e) => {
     if (e.key === 'Enter') {
