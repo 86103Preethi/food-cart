@@ -26,8 +26,8 @@ const Wishlist = () => {
   return (
     <div style={{ paddingTop: '4rem' }}>
       {wishlist.length === 0 ? (
-        <div className="bg-white shadow-lg rounded-lg p-6  items-center flex justify-center gap-3"> 
-          <WorkOffIcon className='mr-3'/> 
+        <div className="bg-white shadow-lg rounded-lg p-6  items-center flex justify-center gap-3 max-w-4xl mx-auto"> 
+          <WorkOffIcon /> 
           Your wishlist is empty.
         </div>
         ) : (
