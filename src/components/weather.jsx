@@ -102,7 +102,7 @@ const Weather = () => {
 
 
     const searchApi = async() => {
-        let url = 'https://api.openweathermap.org/data/2.5/weather?q=${text}&appid=45841bae654177c98405cfb0e5e1f2a8&units=Metric';
+        let url = `https://api.openweathermap.org/data/2.5/weather?q=${text}&appid=45841bae654177c98405cfb0e5e1f2a8&units=Metric`;
 
         try{
         let response = await fetch(url);

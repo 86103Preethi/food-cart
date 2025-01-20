@@ -3,7 +3,7 @@ import './App.css';
 import { Fragment } from 'react';
 import QrCode from './components/QrCode';
 import Events from './components/Events';
-import ShoppingCart from './components/Shoppingcart';
+import ShoppingCart from './components/shoppingcart';
 import Ref from './components/usingRef';
 import Weather from './components/weather';
 import DigitalClock from './components/digitalclock';

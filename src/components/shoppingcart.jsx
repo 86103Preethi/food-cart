@@ -4,7 +4,7 @@ import Header from './Header';
 import Home from './Home';
 import Cart from './Cart';
 import Sidebar from './Sidebar';
-import Login from './Login';
+import Login from './login';
 import Wishlist from './Wishlist';
 
 export const cartContext = createContext();
