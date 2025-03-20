@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
+ 
 const DigitalClock = () => {
   const [currentTime, setCurrentTime] = useState(new Date());
   
@@ -10,23 +10,23 @@ const DigitalClock = () => {
     console.log("currentTime",currentTime);
     return () => clearInterval(timer);
   }, []);
-
+ 
   const getCurrentTime = () => {
     // Format time in 12-hour format without AM/PM
     let hours = currentTime.getHours();
     const minutes = currentTime.getMinutes().toString().padStart(2, '0');
     const seconds = currentTime.getSeconds().toString().padStart(2, '0');
     
-    hours = hours % 12 || 12; 
-
+    hours = hours % 12 || 12;
+ 
     return `${hours}:${minutes}:${seconds}`;
   };
-
+ 
   const getCurrentDate = () => {
     const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
     return currentTime.toLocaleDateString(undefined, options);
   };
-
+ 
   return (
     <div className="App">
       <div className="border border-gray-700 p-10 bg-orange-100 h-80 flex flex-col gap-5 justify-center w-96">
@@ -41,5 +41,5 @@ const DigitalClock = () => {
     </div>
   );
 };
-
+ 
 export default DigitalClock;

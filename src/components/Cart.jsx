@@ -14,7 +14,6 @@ const Cart = () => {
   // const clearAllItemsFromCart = () => {
   //   setCart([])
   // }
-
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
   const removeItemFromCart = (id) => {
@@ -41,7 +40,6 @@ const Cart = () => {
   const handleIncreaseQuantity = (productId) => {
     dispatch(increaseQuantity(productId));
   };
-
   // Decrease quantity of product in the cart
   const handleDecreaseQuantity = (productId) => {
     dispatch(decreaseQuantity(productId));
@@ -81,7 +79,6 @@ const Cart = () => {
                   <div>{product.quantity}</div>
                   <button type="button" className="text-xl font-bold text-gray-700" onClick={() => handleIncreaseQuantity(product.id)}>+</button>
                 </div>
-
                 <div className='w-48 flex flex-col'>
                   <h2 className="text-lg font-semibold">{product.name}</h2>
                   <p className="text-gray-600">{product.description}</p>
