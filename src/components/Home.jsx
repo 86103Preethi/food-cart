@@ -1,42 +1,41 @@
-import React, { useState, useEffect,useContext,useRef } from 'react';
-import image1 from '../images/foodFolder/food1.jpg';
-import image2 from '../images/foodFolder/Food3.jpg';
-import image3 from '../images/foodFolder/Food4.jpg';
-import image4 from '../images/foodFolder/Blueberry-icecream.jpg';
-import image5 from '../images/foodFolder/ChocolateBar.webp';
-import image6 from '../images/foodFolder/chicken65.jpg';
-import image7 from '../images/foodFolder/frenchfries.webp';
-import image8 from '../images/foodFolder/mango-juice.jpg';
-import image9 from '../images/foodFolder/mojito.jpg';
-import image10 from '../images/foodFolder/pepsi.jpg';
-
-import image11 from '../images/foodFolder/biscuits.jpg';
-import image12 from '../images/foodFolder/brownie.avif';
-import image13 from '../images/foodFolder/Burger.jpg';
-import image14 from '../images/foodFolder/cake.jpg';
-import image15 from '../images/foodFolder/chapathi.avif';
-import image16 from '../images/foodFolder/Chicken Briyani.avif';
-import image17 from '../images/foodFolder/Chicken Fried Rice.jpg';
-import image18 from '../images/foodFolder/chips.jpg';
-import image19 from '../images/foodFolder/coffee.png';
-import image20 from '../images/foodFolder/Dosa.jpg';
-import image21 from '../images/foodFolder/egg masala.jpg';
-import image22 from '../images/foodFolder/falooda.webp';
-import image23 from '../images/foodFolder/gulab jamun.jpg';
-import image24 from '../images/foodFolder/idli.jpg';
-import image25 from '../images/foodFolder/maggie.jpg';
-import image26 from '../images/foodFolder/Meals.avif';
-import image27 from '../images/foodFolder/milkshake.jpg';
-import image28 from '../images/foodFolder/pancake.jpg';
-import image29 from '../images/foodFolder/Pongal.jpg';
-import image30 from '../images/foodFolder/poori.jpg';
-import image31 from '../images/foodFolder/popcorn.jpg';
-import image32 from '../images/foodFolder/purple cake.jpg';
-import image33 from '../images/foodFolder/Samosa.jpg';
-import image34 from '../images/foodFolder/shawarma.jpg';
-import image35 from '../images/foodFolder/tea.jpg';
-import image36 from '../images/foodFolder/coffee.png';
-import image37 from '../images/foodFolder/wings.jpg';
+import React, { useState, useEffect,useContext,useRef} from 'react';
+import image1 from '../assets/food folder/food1.jpeg';
+import image2 from '../assets/food folder/Food3.avif';
+import image3 from '../assets/food folder/Food4.avif';
+import image4 from '../assets/food folder/Blueberry-icecream.jpg';
+import image5 from '../assets/food folder/ChocolateBar.webp';
+import image6 from '../assets/food folder/chicken65.jpg';
+import image7 from '../assets/food folder/frenchfries.webp';
+import image8 from '../assets/food folder/mango-juice.jpg';
+import image9 from '../assets/food folder/mojito.jpg';
+import image10 from '../assets/food folder/pepsi.jpg';
+import image11 from '../assets/food folder/biscuits.jpg';
+import image12 from '../assets/food folder/brownie.avif';
+import image13 from '../assets/food folder/Burger.jpg';
+import image14 from '../assets/food folder/cake.jpg';
+import image15 from '../assets/food folder/chapathi.avif';
+import image16 from '../assets/food folder/Chicken Briyani.avif';
+import image17 from '../assets/food folder/Chicken Fried Rice.jpg';
+import image18 from '../assets/food folder/chips.jpg';
+import image19 from '../assets/food folder/coffee.png';
+import image20 from '../assets/food folder/Dosa.jpg';
+import image21 from '../assets/food folder/egg masala.jpg';
+import image22 from '../assets/food folder/falooda.webp';
+import image23 from '../assets/food folder/gulab jamun with rabri.jpg';
+import image24 from '../assets/food folder/Idli.jpg';
+import image25 from '../assets/food folder/maggi.jpg';
+import image26 from '../assets/food folder/Meals.avif';
+import image27 from '../assets/food folder/milkshake.jpg';
+import image28 from '../assets/food folder/pancake.jpg';
+import image29 from '../assets/food folder/Pongal.jpeg';
+import image30 from '../assets/food folder/poori.jpg';
+import image31 from '../assets/food folder/popcorn.jpeg';
+import image32 from '../assets/food folder/purple cake.jpg';
+import image33 from '../assets/food folder/Samosa.jpg';
+import image34 from '../assets/food folder/shawarma.jpg';
+import image35 from '../assets/food folder/tea.jpg';
+import image36 from '../assets/food folder/coffee.png';
+import image37 from '../assets/food folder/wings.jpg';
 
 
 import Card from '@mui/material/Card';
@@ -45,28 +44,28 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-// import { cartContext } from './shoppingcart';
+import { cartContext } from './shoppingcart';
 import SearchIcon from '@mui/icons-material/Search';
 import Sidebar from './Sidebar';
-import { useDispatch,useSelector } from 'react-redux';
-import {addToCart,wishList,removewishList} from './cartActions';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
+import { useDispatch } from 'react-redux';
+import { addToCart } from './cartAction';
+import Video from './Video';
 
 
-const Home = ({filter,setFilter,setSidebarVisible,isSidebarVisible}) => {
+
+const Home = ({filter,setFilter,setSidebarVisible,isSidebarVisible,setIsVideo,isVideo}) => {
 
   const [foodmenu, setFoodmenu] = useState([
     { id: 1, name: 'Veg Salad', time: '2mins', img: image1, description: 'Made fresh', price: '$99.00', latest: 'No' },
     { id: 2, name: 'Strawberry Cake', time: '5mins', img: image2, description: 'Made fresh', price: '$12.00', latest: 'Yes' },
-    { id: 3, name: 'Pizza', time: '10mins', img: image3, description: 'Made fresh', price: '$100.00', latest: 'Yes' },
+    { id: 3, name: 'Pizza', time: '10mins', img: image3, description: 'Made fresh', price: '$100.00', latest: 'No' },
     { id: 4, name: 'BlueBerry IceCream', time: '1mins', img: image4, description: 'Made fresh', price: '$90.00', latest: 'Yes' },
-    { id: 5, name: 'Chocolate', time: '1mins', img: image5, description: 'Made fresh', price: '$70.00', latest: 'Yes' },
+    { id: 5, name: 'Chocolate', time: '1mins', img: image5, description: 'Made fresh', price: '$70.00', latest: 'No' },
     { id: 6, name: 'Chicken 65', time: '15mins', img: image6, description: 'Made fresh', price: '$90.00', latest: 'Yes' },
     { id: 7, name: 'French Fries', time: '5mins', img: image7, description: 'Made fresh', price: '$80.00', latest: 'Yes' },
     { id: 8, name: 'Mosambi', time: '1mins', img: image8, description: 'Made fresh', price: '$10.00', latest: 'Yes' },
     { id: 9, name: 'Mojito', time: '3mins', img: image9, description: 'Made fresh', price: '$20.00', latest: 'Yes' },
-    { id: 10, name: 'Pepsi', time: '30secs', img: image10, description: 'Made fresh', price: '$15.00', latest: 'Yes' },
+    { id: 10, name: 'Pepsi', time: '30secs', img: image10, description: 'Made fresh', price: '$15.00', latest: 'No' },
     { id: 11, name: 'Biscuits', time: '30secs', img: image11, description: 'Made fresh', price: '$15.00', latest: 'No' },
     { id: 12, name: 'Browine', time: '30secs', img: image12, description: 'Made fresh', price: '$15.00', latest: 'No' },
     { id: 13, name: 'Burger', time: '30secs', img: image13, description: 'Made fresh', price: '$15.00', latest: 'No' },
@@ -92,19 +91,15 @@ const Home = ({filter,setFilter,setSidebarVisible,isSidebarVisible}) => {
     { id: 33, name: 'Samosa', time: '30secs', img: image33, description: 'Made fresh', price: '$15.00', latest: 'No' },
     { id: 34, name: 'Shawarma', time: '30secs', img: image34, description: 'Made fresh', price: '$15.00', latest: 'Yes' },
     { id: 35, name: 'Tea', time: '30secs', img: image35, description: 'Made fresh', price: '$15.00', latest: 'No' },
-    { id: 36, name: 'Chicken Wings', time: '30secs', img: image37, description: 'Made fresh', price: '$15.00', latest: 'Yes' },
-    { id: 37, name: 'Coffee', time: '30secs', img: image36, description: 'Made fresh', price: '$15.00', latest: 'Yes' },
+    { id: 36, name: 'Coffee', time: '30secs', img: image36, description: 'Made fresh', price: '$15.00', latest: 'Yes' },
+    { id: 37, name: 'Chicken Wings Fry', time: '30secs', img: image37, description: 'Made fresh', price: '$15.00', latest: 'Yes' },
   ]);
-
-
   const [filteredMenu, setFilteredMenu] = useState(foodmenu);
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
   const [text,setText] = useState('');
   const [visibleData, setVisibleData] = useState(10); 
   const observer = useRef(null); 
-
-
   
   useEffect(() => {
     if(filter === 'all'){
@@ -117,6 +112,7 @@ const Home = ({filter,setFilter,setSidebarVisible,isSidebarVisible}) => {
   }, [filter,foodmenu]);
 
   useEffect(() => {
+    console.log('pppp',foodmenu.map(item => item.img));
     if (observer.current) {
       const options = {
         root: null, // Observe from the viewport
@@ -191,7 +187,6 @@ const Home = ({filter,setFilter,setSidebarVisible,isSidebarVisible}) => {
   };
 
   const handleSearch = (e) => {
-    console.log("onchange",e.target.value);
     setText(e.target.value);
     searchData();  
     if(e.target.value === ''){
@@ -211,22 +206,10 @@ const Home = ({filter,setFilter,setSidebarVisible,isSidebarVisible}) => {
       }
     };
 
-    const wishlist = useSelector((state) => state.wishlist || []);
-        const handleClicked = (product) => {
-        console.log("Adding to wishlist:",product);
-        dispatch(wishList(product)); 
-        console.log("wishh00",wishlist);
-    }
-
-
-    const handleremoveClicked = (product) => {
-      dispatch(removewishList(product)); 
-    }    
-
 
   return (
     <>
-<div className={`home-container ${isSidebarVisible ? 'with-sidebar' : ''}`} style={{ paddingTop: '4rem' }}>
+      <div className={`home-container ${isSidebarVisible ? 'with-sidebar' : ''} ${isVideo ? 'with-video' : ''}`} style={{ paddingTop: '4rem' }}>
         
         {isSidebarVisible && (
         <Sidebar isSidebarVisible={isSidebarVisible} setSidebarVisible={setSidebarVisible} setFilter={setFilter} />
@@ -241,7 +224,7 @@ const Home = ({filter,setFilter,setSidebarVisible,isSidebarVisible}) => {
           </p>
         </div>
 
-        <div className='flex justify-center gap-2 mt-10'>
+        <div className='flex justify-center gap-2 my-6'>
             <input  type='text' placeholder='Search your favorite food' className='border rounded-full p-3 w-80' value={text} onChange={handleSearch} onKeyDown={handleKeyDown}/>
             <button type='button' className='border bg-darkPink bg-white rounded-full p-2.5' onClick={searchData}>
                 <SearchIcon className=''/>
@@ -270,14 +253,9 @@ const Home = ({filter,setFilter,setSidebarVisible,isSidebarVisible}) => {
                     <h1>Price: {product.price}</h1>
                   </CardContent>
 
-                  <CardActions className='flex justify-between'>
+                  <CardActions className=''>
                     <Button type='button' size="small" style={{color:'#f1356d',background:'antiquewhite',m:0}} onClick={() => addProductToCart(product)}>Add to cart</Button>
-                    {wishlist && wishlist.some((item) => item.id === product.id) ? (
-                      <FavoriteIcon sx={{fontSize:'25px'}} className='darkPink' onClick={() => handleremoveClicked(product)}/>
-                    ) : (
-                      <FavoriteBorderOutlinedIcon sx={{fontSize:'25px'}} className='darkPink' onClick={() => handleClicked(product)}/>
-                    )}
-                  </CardActions>
+                  </CardActions>
 
 
                 </Card>
@@ -294,6 +272,19 @@ const Home = ({filter,setFilter,setSidebarVisible,isSidebarVisible}) => {
             </div>
           </div>
           )} */}
+
+         
+          {isVideo && (
+            <Video
+              images={foodmenu.map((item) => item.img)}
+              title={foodmenu.map((item) => item.name)}
+              isOpen={isVideo}
+              toggleSidebar={() => setIsVideo(!isVideo)}
+            />
+          )}
+
+
+
          
          {/* Lazy Loading */}
          <div ref={observer} style={{ height: '20px', margin: '20px 0' }} />

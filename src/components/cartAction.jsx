@@ -1,4 +1,5 @@
 // cartActions.jsx
+
 export const addToCart = (product) => {
     return {
         type: 'ADD_TO_CART',
@@ -31,18 +32,4 @@ export const decreaseQuantity = (productId) => {
         type:'DECREASE_QUANTITY',
         payload: productId,
     }
-}
-
-export const wishList = (product) => {
-    return {
-        type:'WISH_LIST',
-        payload:product,
-    }
-}
-
-export const removewishList = (product) => {
-    return {
-        type:'REMOVE_WISH_LIST',
-        payload:product,
-    }
 }

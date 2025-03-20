@@ -8,12 +8,11 @@ import MenuItem from '@mui/material/MenuItem';
 import Divider from '@mui/material/Divider';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import leaf from '../images/foodFolder/moon.jpg';
-import {Home} from '@mui/icons-material';
-import FavoriteIcon from '@mui/icons-material/Favorite';
+import leaf from '../assets/food folder/leaf.jpeg';
+import SmartDisplayIcon from '@mui/icons-material/SmartDisplay';
 
 
-const Header = ({isSidebarVisible,setSidebarVisible,setIsLoggedIn}) => {
+const Header = ({isSidebarVisible,setSidebarVisible,setIsLoggedIn,isVideo,setIsVideo}) => {
   const total = useSelector((state) => state.totalQuantity);
   const navigate = useNavigate(); 
   const [open,setOpen] = useState(false);
@@ -31,6 +30,10 @@ const Header = ({isSidebarVisible,setSidebarVisible,setIsLoggedIn}) => {
     setIsLoggedIn(false);
     setOpen(false);
   };
+
+  const handleDisplay = () => {
+    setIsVideo(!isVideo);
+  }
   
 
   return (
@@ -47,23 +50,19 @@ const Header = ({isSidebarVisible,setSidebarVisible,setIsLoggedIn}) => {
             </svg>
           )}
         </span>
-        Food Cart
+        Foodie
       </div>
 
       <ul className='flex space-x-4 gap-3 items-end'>
         <li>
-          <Link to='/'> 
-            <Home sx={{fontSize:'28px'}} />
-          </Link>
+          <Link to='/'>Home</Link>
         </li>  
-        <li>
-          <Link to='/wishlist'> 
-            <FavoriteIcon sx={{fontSize:'25px'}} />
-          </Link>
-        </li> 
+        <li onClick={handleDisplay}>
+          <Link > <SmartDisplayIcon/> </Link>
+        </li>
         <li>
           <Link to='/cart'>
-            <Badge badgeContent={total} color="primary">
+           <Badge badgeContent={total} color="primary">
              <ShoppingBagIcon/>
             </Badge>
           </Link>
@@ -82,6 +81,7 @@ const Header = ({isSidebarVisible,setSidebarVisible,setIsLoggedIn}) => {
             >
               <MenuItem >Profile</MenuItem>
               <MenuItem >Orders</MenuItem>
+              <MenuItem >Wishlists</MenuItem>
               <Divider />
               <MenuItem onClick={handleLogout}>Logout</MenuItem>
             </Menu>
