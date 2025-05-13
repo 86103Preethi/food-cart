@@ -53,6 +53,7 @@ import Video from './Video';
 
 
 
+
 const Home = ({filter,setFilter,setSidebarVisible,isSidebarVisible,setIsVideo,isVideo}) => {
 
   const [foodmenu, setFoodmenu] = useState([
@@ -112,7 +113,6 @@ const Home = ({filter,setFilter,setSidebarVisible,isSidebarVisible,setIsVideo,is
   }, [filter,foodmenu]);
 
   useEffect(() => {
-    console.log('pppp',foodmenu.map(item => item.img));
     if (observer.current) {
       const options = {
         root: null, // Observe from the viewport
@@ -257,6 +257,7 @@ const Home = ({filter,setFilter,setSidebarVisible,isSidebarVisible,setIsVideo,is
                     <Button type='button' size="small" style={{color:'#f1356d',background:'antiquewhite',m:0}} onClick={() => addProductToCart(product)}>Add to cart</Button>
                   </CardActions>
 
+                   
 
                 </Card>
             ))}
@@ -280,6 +281,7 @@ const Home = ({filter,setFilter,setSidebarVisible,isSidebarVisible,setIsVideo,is
               title={foodmenu.map((item) => item.name)}
               isOpen={isVideo}
               toggleSidebar={() => setIsVideo(!isVideo)}
+              className = 'p-3'
             />
           )}
 

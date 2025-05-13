@@ -24,7 +24,6 @@ const ShoppingCart = () => {
     }
   }, []);
 
-  // const isLoginPage = location.pathname === '/login';
 
   return (
     <cartContext.Provider value={{ cart, setCart }}>

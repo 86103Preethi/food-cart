@@ -1,52 +1,64 @@
 import React, { useState } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import ArrowBackIos from "@mui/icons-material/ArrowBackIos"; 
+import ArrowForwardIos from "@mui/icons-material/ArrowForwardIos";
+import bread from '../assets/Videos/bread.mp4';
+import cookie from '../assets/Videos/cookie.mp4';
+import patti from '../assets/Videos/patti.mp4';
 
-const Video = ({ images, isOpen, title }) => {
+const Video = ({ images = [], title = [], isOpen }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [videos] = useState([
+    { id: 1, player: bread, title: "Bread Video" },
+    { id: 2, player: cookie, title: "Cookie Video" },
+    { id: 3, player: patti, title: "Patti Video" },
+  ]);
 
   const nextSlide = () => {
     setCurrentIndex((prevIndex) =>
-      prevIndex === images.length - 1 ? 0 : prevIndex + 1
+      prevIndex === videos.length - 1 ? 0 : prevIndex + 1
     );
   };
 
   const prevSlide = () => {
     setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? images.length - 1 : prevIndex - 1
+      prevIndex === 0 ? videos.length - 1 : prevIndex - 1
     );
   };
 
   return (
-    <div className={`video-container ${isOpen ? "with-sidebar" : ""}`}>
-      {/* Sidebar */}
+    <div className={`video-container ${isOpen ? "with-sidebar" : ""}`} >
       <div className={`video-sidebar ${isOpen ? "open" : "closed"}`}>
         <div className="relative w-full h-full flex flex-col items-center justify-center">
-          {/* Image */}
           <div className="relative w-full">
-            <img
+            {/* <img
               src={images[currentIndex]}
               alt={`Slide ${currentIndex}`}
               className="w-full h-[300px] object-cover rounded-lg"
+            /> */}
+            <video
+              src={videos[currentIndex].player}
+              controls
+              autoPlay
+              loop
+              className="w-full h-[300px] object-cover rounded-lg"
             />
 
-            {/* Navigation Arrows */}
             <div className="absolute inset-0 flex items-center justify-between px-4">
               <button
                 onClick={prevSlide}
-                className="bg-gray-800 text-white p-2 rounded-full"
+                className="bg-gray-800 text-white p-2 rounded-full hover:bg-gray-700"
               >
-                <ChevronLeft size={24} />
+                <ArrowBackIos fontSize="small" /> {/* MUI Previous Icon */}
               </button>
               <button
                 onClick={nextSlide}
-                className="bg-gray-800 text-white p-2 rounded-full"
+                className="bg-gray-800 text-white p-2 rounded-full hover:bg-gray-700"
               >
-                <ChevronRight size={24} />
+                <ArrowForwardIos fontSize="small" /> {/* MUI Next Icon */}
               </button>
             </div>
           </div>
 
-          {/* Marquee for Title */}
           <div className="w-full mt-2 overflow-hidden whitespace-nowrap">
             <p
               className="text-md font-bold inline-block animate-marquee"
@@ -58,7 +70,6 @@ const Video = ({ images, isOpen, title }) => {
         </div>
       </div>
 
-      {/* Marquee Animation CSS */}
       <style>
         {`
           @keyframes marquee {

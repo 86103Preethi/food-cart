@@ -4,11 +4,11 @@ import './App.css';
 import Shoppingcart from './components/shoppingcart';
 // import Digitalclock from './components/digitalclock';
 // import UseReducer from './components/UseReducer';
-// // import Lazyloading from './components/Lazyloading';
+// import Lazyloading from './components/Lazyloading';
 // import Addcomponent from './components/Redux/Addcomponent';
 // import { Suspense } from 'react';
-// import Login from './components/login';
 // const LazyComponent = React.lazy(() => import('./components/Lazyloading'));
+import Crud from './components/Crud';
 
 
 
@@ -20,6 +20,8 @@ function App() {
     <div>
         {/* <Digitalclock/> */}
         <Shoppingcart/>
+        {/* <Crud/> */}
+        {/* <Demo/> */}
         {/* <Login/> */}
         {/* <UseReducer/> */}
         {/* <Suspense fallback={<div>Loading.....</div>}>
