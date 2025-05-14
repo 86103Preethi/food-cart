@@ -2,6 +2,7 @@
 const initialState = {
     cart: [],
     totalQuantity: 0,
+    wishlist: [],
   };
   
   const cartReducer = (state = initialState, action) => {
@@ -55,6 +56,28 @@ const initialState = {
           ...state,
           cart: decrease,
           totalQuantity:deacreasetotalQuantity,
+        };  
+
+      case 'WISH_LIST':
+        console.log("state*", state);
+        let updatedWishlist;
+        const existingWishlistItem = state.wishlist.find((item) => item.id === action.payload.id);
+        if (existingWishlistItem) { 
+          updatedWishlist = [...state.wishlist];
+        }else{
+          updatedWishlist = [...state.wishlist, { ...action.payload}];
+        }
+        console.log("Updated Wishlist:", updatedWishlist);
+        return {
+          ...state,
+          wishlist: updatedWishlist,
+        };
+      
+      case 'REMOVE_WISH_LIST':
+        const remove = state.wishlist?.filter((item) => item.id !== action.payload.id);
+        return {
+          ...state,
+          wishlist: remove,
         };  
 
       default:

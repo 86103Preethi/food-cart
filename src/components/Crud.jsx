@@ -1,83 +1,147 @@
-import React, { useState } from "react";
+import React, { useState, useEffect} from 'react';
+import axios from 'axios';
+import Modal from '@mui/material/Modal';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
 
-export default function Crud() {
-  const [users, setUsers] = useState([
-    { id: 1, name: "John Doe", email: "john@example.com" },
-    { id: 2, name: "Jane Doe", email: "jane@example.com" },
-  ]);
-
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [editingId, setEditingId] = useState(null);
-
-  const addUser = () => {
-    if (!name || !email) return;
-    setUsers([...users, { id: Date.now(), name, email }]);
-    setName("");
-    setEmail("");
+const Crud = () => {
+  const [users, setUsers] = useState([]);
+  const [filteredUsers, setFilteredUsers] = useState([]);
+  const [editModal, setEditModal] = useState(false);
+  const handleClose = () => setEditModal(false);
+  const style = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 400,
+    bgcolor: 'background.paper',
+    border: '2px solid #000',
+    boxShadow: 24,
+    p: 4,
   };
 
-  const editUser = (user) => {
-    setEditingId(user.id);
-    setName(user.name);
-    setEmail(user.email);
+  const getallUsers = async () => {
+    try {
+      const result = await axios.get('http://localhost:8000/users');
+      setUsers(result.data);
+      setFilteredUsers(result.data);
+      console.log("usrs",result.data);
+    } catch (error) {
+      console.error("Error fetching users:", error);
+    }
   };
+  
 
-  const updateUser = () => {
-    setUsers(users.map(user => user.id === editingId ? { id: editingId, name, email } : user));
-    setEditingId(null);
-    setName("");
-    setEmail("");
-  };
+  useEffect(() => {
+    getallUsers();
+  },[]);
 
-  const deleteUser = (id) => {
-    setUsers(users.filter(user => user.id !== id));
-  };
+  const handleSearch = (event) => {
+    console.log("search",event.target.value);
+    const searchTerm = event.target.value;
+    const filter = users.filter((item) => 
+      item.name.toLowerCase().includes(searchTerm.toLowerCase())
+    )
+    setFilteredUsers(filter); 
+  }
+
+  const handleEdit = async(item) => {
+    console.log("item",item);
+    setEditModal(true);
+    
+
+    try{
+  
+    }catch(error){
+      console.error('error',error)
+    }
+
+
+  }
+
+  const handleDelete = () => {
+     
+  }
 
   return (
-    <div className="p-6 max-w-lg mx-auto bg-white shadow-md rounded-lg">
-      <h2 className="text-xl font-bold mb-4">React CRUD App</h2>
-      
-      <input 
-        type="text" placeholder="Name" value={name} 
-        onChange={(e) => setName(e.target.value)}
-        className="border p-2 w-full rounded mb-2"
-      />
-      
-      <input 
-        type="email" placeholder="Email" value={email} 
-        onChange={(e) => setEmail(e.target.value)}
-        className="border p-2 w-full rounded mb-2"
-      />
-      
-      {editingId ? (
-        <button onClick={updateUser} className="bg-green-500 text-white px-4 py-2 rounded">
-          Update User
-        </button>
-      ) : (
-        <button onClick={addUser} className="bg-blue-500 text-white px-4 py-2 rounded">
-          Add User
-        </button>
-      )}
+    <div className="p-8 bg-gray-100 min-h-screen">
+      <div className="text-2xl font-bold text-green-700">Office Members Details</div>
+      <hr className='text-gray-400 mt-2 mb-6'/> 
 
-      <div className="mt-4">
-        {users.map((user) => (
-          <div key={user.id} className="border p-3 flex justify-between mb-2 rounded">
-            <div>
-              <p className="font-bold">{user.name}</p>
-              <p className="text-gray-500">{user.email}</p>
-            </div>
-            <div>
-              <button onClick={() => editUser(user)} className="bg-yellow-500 text-white px-2 py-1 rounded mr-2">
-                Edit
-              </button>
-              <button onClick={() => deleteUser(user.id)} className="bg-red-500 text-white px-2 py-1 rounded">
-                Delete
-              </button>
-            </div>
-          </div>
-        ))}
+      <div className="flex justify-between mb-6">
+        <input
+          type="search"
+          placeholder="Search for name"
+          onChange={handleSearch}
+          className="px-4 py-2 border border-gray-300 rounded-lg w-1/3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+        <button className="px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-all">
+          Add Members
+        </button>
       </div>
+
+      <table className="min-w-full bg-white border border-gray-200 rounded-lg shadow-sm">
+        <thead className="bg-gray-200">
+          <tr>
+            <th className="px-4 py-2 border text-left">S.No</th>
+            <th className="px-4 py-2 border text-left">Name</th>
+            <th className="px-4 py-2 border text-left">Age</th>
+            <th className="px-4 py-2 border text-left">City</th>
+            <th className="px-4 py-2 border text-left">Edit</th>
+            <th className="px-4 py-2 border text-left">Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+      {filteredUsers.length === 0 ? (
+        <tr>
+          <td colSpan="6" className="text-center py-4">
+            No Matching Data
+          </td>  
+        </tr>
+      ) : (
+        <>
+          {filteredUsers.map((user) => (
+            <tr key={user.id} className='hover:bg-gray-100'>
+              <td className="px-4 py-2 border">{user.id}</td>
+              <td className="px-4 py-2 border">{user.name}</td>
+              <td className="px-4 py-2 border">{user.age}</td>
+              <td className="px-4 py-2 border">{user.city}</td>
+              <td onClick={() => handleEdit(user)} className="px-4 py-2 border text-blue-500 cursor-pointer hover:underline">
+                Edit
+              </td>
+              <td onClick={handleDelete} className="px-4 py-2 border text-red-500 cursor-pointer hover:underline">
+                Delete
+              </td>
+            </tr>
+          ))}
+        </>
+      )}
+      </tbody>
+
+      </table>
+
+
+      <Modal
+        open={editModal}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+        >
+        <Box sx={style}>
+          <Typography id="modal-modal-title" variant="h6" component="h2">
+            Text in a modal
+          </Typography>
+          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+            
+          </Typography>
+        </Box>
+        </Modal>
+
     </div>
-  );
+  )
 }
+
+export default Crud

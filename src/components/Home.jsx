@@ -47,11 +47,11 @@ import Typography from '@mui/material/Typography';
 import { cartContext } from './shoppingcart';
 import SearchIcon from '@mui/icons-material/Search';
 import Sidebar from './Sidebar';
-import { useDispatch } from 'react-redux';
-import { addToCart } from './cartAction';
+import { useDispatch,useSelector } from 'react-redux';
+import { addToCart,wishList,removewishList } from './cartAction';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import Video from './Video';
-
-
 
 
 const Home = ({filter,setFilter,setSidebarVisible,isSidebarVisible,setIsVideo,isVideo}) => {
@@ -206,6 +206,18 @@ const Home = ({filter,setFilter,setSidebarVisible,isSidebarVisible,setIsVideo,is
       }
     };
 
+    const wishlist = useSelector((state) => state.wishlist || []);
+    const handleClicked = (product) => {
+      console.log("Adding to wishlist:",product);
+      dispatch(wishList(product)); 
+      console.log("wishh00",wishlist);
+    }
+
+
+    const handleremoveClicked = (product) => {
+      dispatch(removewishList(product)); 
+    }  
+
 
   return (
     <>
@@ -255,6 +267,11 @@ const Home = ({filter,setFilter,setSidebarVisible,isSidebarVisible,setIsVideo,is
 
                   <CardActions className=''>
                     <Button type='button' size="small" style={{color:'#f1356d',background:'antiquewhite',m:0}} onClick={() => addProductToCart(product)}>Add to cart</Button>
+                    {wishlist && wishlist.some((item) => item.id === product.id) ? (
+                      <FavoriteIcon sx={{fontSize:'25px'}} className='darkPink' onClick={() => handleremoveClicked(product)}/>
+                    ) : (
+                      <FavoriteBorderOutlinedIcon sx={{fontSize:'25px'}} className='darkPink' onClick={() => handleClicked(product)}/>
+                    )}
                   </CardActions>
 
                    
@@ -275,7 +292,7 @@ const Home = ({filter,setFilter,setSidebarVisible,isSidebarVisible,setIsVideo,is
           )} */}
 
          
-          {isVideo && (
+          {/* {isVideo && (
             <Video
               images={foodmenu.map((item) => item.img)}
               title={foodmenu.map((item) => item.name)}
@@ -283,7 +300,7 @@ const Home = ({filter,setFilter,setSidebarVisible,isSidebarVisible,setIsVideo,is
               toggleSidebar={() => setIsVideo(!isVideo)}
               className = 'p-3'
             />
-          )}
+          )} */}
 
 
 

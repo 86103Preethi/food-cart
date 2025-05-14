@@ -7,7 +7,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import { addToCart,removewishList } from './cartActions';
+import { addToCart,removewishList } from './cartAction';
 import { useDispatch } from 'react-redux';
 import WorkOffIcon from '@mui/icons-material/WorkOff';
 

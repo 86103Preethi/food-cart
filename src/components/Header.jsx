@@ -10,6 +10,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import leaf from '../assets/food folder/leaf.jpeg';
 import SmartDisplayIcon from '@mui/icons-material/SmartDisplay';
+import {Home} from '@mui/icons-material';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 
 
 const Header = ({isSidebarVisible,setSidebarVisible,setIsLoggedIn,isVideo,setIsVideo}) => {
@@ -55,11 +57,18 @@ const Header = ({isSidebarVisible,setSidebarVisible,setIsLoggedIn,isVideo,setIsV
 
       <ul className='flex space-x-4 gap-3 items-end'>
         <li>
-          <Link to='/'>Home</Link>
+          <Link to='/'> 
+            <Home sx={{fontSize:'28px'}} />
+          </Link>
         </li>  
         <li onClick={handleDisplay}>
           <Link > <SmartDisplayIcon/> </Link>
         </li>
+        <li>
+          <Link to='/wishlist'> 
+            <FavoriteIcon sx={{fontSize:'25px'}} />
+          </Link>
+        </li> 
         <li>
           <Link to='/cart'>
            <Badge badgeContent={total} color="primary">
@@ -81,7 +90,6 @@ const Header = ({isSidebarVisible,setSidebarVisible,setIsLoggedIn,isVideo,setIsV
             >
               <MenuItem >Profile</MenuItem>
               <MenuItem >Orders</MenuItem>
-              <MenuItem >Wishlists</MenuItem>
               <Divider />
               <MenuItem onClick={handleLogout}>Logout</MenuItem>
             </Menu>

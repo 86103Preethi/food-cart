@@ -5,6 +5,7 @@ import Home from './Home';
 import Cart from './Cart';
 import Sidebar from './Sidebar';
 import Login from './login';
+import Wishlist from './Wishlist';
 
 export const cartContext = createContext();
 
@@ -47,6 +48,7 @@ const ShoppingCart = () => {
             />
             <Route path='/cart' element={<Cart />} />
             <Route path='/login' element={<Login  setIsLoggedIn={setIsLoggedIn}/>} /> 
+            <Route path='/wishlist' element={<Wishlist />} /> 
           </Routes>
         </div>
       </BrowserRouter>

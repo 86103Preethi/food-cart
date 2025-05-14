@@ -6,7 +6,6 @@ const Sidebar = ({ isSidebarVisible, setFilter }) => {
   const [activeFilter, setActiveFilter] = useState('all'); 
 
   const handleFilterChange = (filterType) => {
-    console.log("side",filterType);
     setFilter(filterType);
     setActiveFilter(filterType); 
   };

@@ -2,6 +2,7 @@ import { Toast } from "flowbite-react";
 import { HiCheck, HiX } from "react-icons/hi";
 
 export function ToastNotification({ successAlert, failureAlert }) {
+  
   return (
     <div className="absolute top-0 right-0 transform -translate-x-1/2 z-50 flex flex-col gap-4 p-4">
       {/* Success Toast */}
