@@ -21,22 +21,24 @@ const Login = ({ setIsLoggedIn }) => {
     if (password === '') {
       pwdsetError('Password is required.');
     }
-    if(!usererror || !pwderror){
-      return
+
+    if(username && password){
+      if (username === 'admin' && password === 'preethi') {
+        setSuccessAlert('Login Successful !!');
+        setUsername('');
+        setPassword('');
+        usersetError('');
+        pwdsetError('');
+        localStorage.setItem('isLoggedIn', 'true');
+        setIsLoggedIn(true);
+      } else {
+        setFailureAlert('Invalid credentials');
+        // setUsername('');
+        // setPassword('');
+      }
     }
 
-    if (username === 'admin' && password === 'preethi') {
-      setSuccessAlert('Login Successful !!');
-      setUsername('');
-      setPassword('');
-      localStorage.setItem('isLoggedIn', 'true');
-      setIsLoggedIn(true);
-    } else {
-      setFailureAlert('Invalid credentials');
-      console.log('pppppp')
-      setUsername('');
-      setPassword('');
-    }
+
   };
 
   return (

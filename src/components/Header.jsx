@@ -52,7 +52,7 @@ const Header = ({isSidebarVisible,setSidebarVisible,setIsLoggedIn,isVideo,setIsV
             </svg>
           )}
         </span>
-        Foodie
+        Foodie's Spot
       </div>
 
       <ul className='flex space-x-4 gap-3 items-end'>
