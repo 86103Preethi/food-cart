@@ -292,7 +292,7 @@ const Home = ({filter,setFilter,setSidebarVisible,isSidebarVisible,setIsVideo,is
           )} */}
 
          
-          {/* {isVideo && (
+          {isVideo && (
             <Video
               images={foodmenu.map((item) => item.img)}
               title={foodmenu.map((item) => item.name)}
@@ -300,7 +300,7 @@ const Home = ({filter,setFilter,setSidebarVisible,isSidebarVisible,setIsVideo,is
               toggleSidebar={() => setIsVideo(!isVideo)}
               className = 'p-3'
             />
-          )} */}
+          )}
 
 
 
