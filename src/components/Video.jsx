@@ -40,9 +40,8 @@ const Video = ({ images = [], title = [], isOpen }) => {
               controls
               autoPlay
               loop
-              className="w-full h-[300px] object-cover rounded-lg"
+              className="w-full h-[300px] object-cover rounded-lg p-5"
             />
-
             <div className="absolute inset-0 flex items-center justify-between px-4">
               <button
                 onClick={prevSlide}
@@ -67,6 +66,7 @@ const Video = ({ images = [], title = [], isOpen }) => {
               {title[currentIndex]}
             </p>
           </div>
+          
         </div>
       </div>
 

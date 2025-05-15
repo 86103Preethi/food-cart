@@ -94,7 +94,7 @@
   margin-left: 240px; /* Adjust the content when the sidebar is open */
 }
 .home-container.with-video {
-  margin-right: 320px; /* Video open */
+  margin-right: 420px; /* Video open */
 }
 
 @media (max-width: 768px) {
@@ -113,7 +113,7 @@
 }
  
 .video-sidebar {
-  width: 320px;
+  width: 420px;
   position: fixed;
   top: 0;
   right: 0;

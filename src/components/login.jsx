@@ -17,9 +17,13 @@ const Login = ({ setIsLoggedIn }) => {
     e.preventDefault();
     if (username === '') {
       usersetError('Username is required.');
+    }else{
+      usersetError('');
     }
     if (password === '') {
       pwdsetError('Password is required.');
+    }else{
+      pwdsetError('');
     }
 
     if(username && password){
