@@ -14,6 +14,7 @@ const Cart = () => {
   // const clearAllItemsFromCart = () => {
   //   setCart([])
   // }
+  
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
   
